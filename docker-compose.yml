@@ -1,0 +1,60 @@
+# SPDX-License-Identifier: Apache-2.0
+version: '3.8'
+
+services:
+  mcp-cessda-http:
+    build:
+      context: .
+      dockerfile: Dockerfile.http
+    image: cessda/mcp-datasets-http:0.1.0
+    container_name: mcp-cessda-datasets-http
+    ports:
+      - "8000:8000"
+    environment:
+      # CESSDA API Configuration
+      - CESSDA_API_BASE_URL=${CESSDA_API_BASE_URL:-https://datacatalogue.cessda.eu/api}
+      - CESSDA_API_TIMEOUT=${CESSDA_API_TIMEOUT:-30}
+      - CESSDA_API_MAX_RETRIES=${CESSDA_API_MAX_RETRIES:-3}
+
+      # Logging Configuration
+      - CESSDA_LOG_LEVEL=${CESSDA_LOG_LEVEL:-INFO}
+
+      # Default Search Parameters
+      - CESSDA_DEFAULT_LANGUAGE=${CESSDA_DEFAULT_LANGUAGE:-en}
+      - CESSDA_DEFAULT_LIMIT=${CESSDA_DEFAULT_LIMIT:-10}
+      - CESSDA_MAX_LIMIT=${CESSDA_MAX_LIMIT:-200}
+
+      # HTTP Server Configuration
+      - MCP_HOST=${MCP_HOST:-0.0.0.0}
+      - MCP_PORT=${MCP_PORT:-8000}
+
+    restart: unless-stopped
+
+    # Resource limits (adjust based on your needs)
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  default:
+    name: mcp-cessda-network
