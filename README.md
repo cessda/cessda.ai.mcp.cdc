@@ -48,8 +48,8 @@ This MCP server provides AI assistants with access to the [CESSDA Data Catalogue
 
 ```bash
 # Clone the repository
-git clone https://github.com/cessda/mcp-cessda-datasets.git
-cd mcp-cessda-datasets
+git clone https://github.com/cessda/cessda.ai.mcp.cdc.git
+cd cessda.ai.mcp.cdc
 
 # Install in development mode
 pip install -e .
@@ -189,8 +189,8 @@ Try these prompts in Claude Desktop:
 
 ```bash
 # Clone repository
-git clone https://github.com/cessda/mcp-cessda-datasets.git
-cd mcp-cessda-datasets
+git clone https://github.com/cessda/cessda.ai.mcp.cdc.git
+cd cessda.ai.mcp.cdc
 
 # Install with development dependencies
 pip install -e ".[dev]"
@@ -327,7 +327,7 @@ See [CESSDA Release Guidelines](https://docs.tech.cessda.eu/software/releases.ht
 
 ## License
 
-Copyright © 2025 CESSDA
+Copyright © 2025 CESSDA ERIC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -349,7 +349,7 @@ See [LICENSE.txt](LICENSE.txt) for full license text.
 - [CESSDA Technical Documentation](https://docs.tech.cessda.eu/)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [FastMCP Documentation](https://github.com/jlowin/fastmcp)
-- [Issue Tracker](https://github.com/cessda/mcp-cessda-datasets/issues)
+- [Issue Tracker](https://github.com/cessda/cessda.ai.mcp.cdc/issues)
 
 ## Contributing
 

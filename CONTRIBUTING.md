@@ -15,8 +15,8 @@ Thank you for your interest in contributing to the CESSDA MCP Datasets Server!
 
 ```bash
 # Clone the repository
-git clone https://github.com/cessda/mcp-cessda-datasets.git
-cd mcp-cessda-datasets
+git clone https://github.com/cessda/cessda.ai.mcp.cdc.git
+cd cessda.ai.mcp.cdc
 
 # Install in development mode
 pip install -e .
